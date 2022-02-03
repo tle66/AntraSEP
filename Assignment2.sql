@@ -62,5 +62,23 @@ FROM Products WHERE Products.UnitsOnOrder>0
 SELECT TOP 5 SUM(UnitsOnOrder) AS "Saleno", PostalCode 
 FROM Products AS p JOIN Suppliers AS s ON p.SupplierID = s.SupplierID
 GROUP BY PostalCode
- ORDER BY "Saleno" DESC
+ORDER BY "Saleno" DESC
+
+
+SELECT COUNT(City) AS "Customer Number", City
+FROM Customers 
+GROUP BY City
+
+
+SELECT COUNT(City) AS [Customer Number], City
+FROM Customers 
+GROUP BY City 
+HAVING COUNT(City) > 2
+
+SELECT ContactName, PostalCode
+FROM Customers AS c JOIN Orders AS o ON c.CustomerID = o.CustomerID WHERE o.OrderDate > '1998-01-01 00:00:00.000'
+
+
+SELECT ContactName, OrderDate
+FROM Customers AS c JOIN Orders AS o ON c.CustomerID = o.CustomerID ORDER BY OrderDate DESC
 
